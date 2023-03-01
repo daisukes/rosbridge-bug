@@ -1,0 +1,25 @@
+version: "2.3"
+
+
+
+services:
+  ros:
+    build:
+      context: ./ros
+    command: ./launch.sh
+    networks:
+      - ros_network
+
+
+  roslibpy:
+    build:
+      context: ./bridge
+    command: ./test_ok.py
+    networks:
+      - ros_network
+
+
+networks:
+  ros_network:
+    name: ros_network
+
